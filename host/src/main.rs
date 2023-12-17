@@ -20,7 +20,10 @@ fn main() {
 }
 
 fn oidc_verify_jwt(jwt: &str, provider: IdentityProvider) -> (Receipt, Vec<u8>) {
-    println!("oidc_verify_jwt");
+    println!(
+        "oidc_verify_jwt start jwt: {:?} provider: {:?}",
+        jwt, provider
+    );
     let env = ExecutorEnv::builder()
         .write(&provider)
         .unwrap()
@@ -31,7 +34,7 @@ fn oidc_verify_jwt(jwt: &str, provider: IdentityProvider) -> (Receipt, Vec<u8>) 
 
     // Obtain the default prover.
     let prover = default_prover();
-    println!("prover: {:?}", prover);
+    println!("create prover");
 
     // Produce a receipt by proving the specified ELF binary.
     let receipt = prover.prove_elf(env, OIDC_VERIFY_ELF).unwrap();
