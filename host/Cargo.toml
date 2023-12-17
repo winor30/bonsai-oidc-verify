@@ -1,0 +1,16 @@
+[package]
+name = "oidc-verify-host"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+oidc-verify-methods = { path = "../methods" }
+oidc = { path = "../oidc/"}
+risc0-zkvm = { version = "0.19.1" }
+serde = "1.0"
+
+[features]
+cuda = ["risc0-zkvm/cuda"]
+default = []
+metal = ["risc0-zkvm/metal"]
+prove = ["risc0-zkvm/prove"]
